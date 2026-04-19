@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph War Clone | Math Mastery</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Load Math.js for safe and robust equation parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1 class="glitch" data-text="GRAPH WAR">GRAPH WAR</h1>
+            <div class="stats glass-panel" style="display: flex; gap: 20px; padding: 10px 20px; border-radius: 50px;">
+                <div class="stat-item level-display">Level: <span id="level">Training</span></div>
+                <div class="scoreboard single-player-score">
+                    <div class="stat-item">Score: <span id="score">0</span></div>
+                    <div class="stat-item">High Score: <span id="high-score">0</span></div>
+                </div>
+                <div class="scoreboard multi-player-score hidden">
+                    <div class="player-score p1">P1 (Blue): <span id="p1-score">0</span></div>
+                    <div class="player-score p2">P2 (Red): <span id="p2-score">0</span></div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="canvas-container">
+                <div id="turn-indicator" class="hidden">PLAYER 1's TURN</div>
+                <canvas id="graph-canvas"></canvas>
+                <div id="rules-overlay" class="glass-panel hidden">
+                    <div class="rules-content">
+                        <h2>WAR MODE RULES</h2>
+                        <ul class="rules-list">
+                            <li>First to <strong>1000 points</strong> wins!</li>
+                            <li><span class="p1-text">Player 1 (Blue)</span> scores by hitting <span class="p2-text">Red dots</span>.</li>
+                            <li><span class="p2-text">Player 2 (Red)</span> scores by hitting <span class="p1-text">Blue dots</span>.</li>
+                            <li>Hitting your <strong>own color</strong> gives points to your opponent and <strong>ends your turn</strong>.</li>
+                            <li>You get <strong>another turn</strong> only if you hit an opponent dot AND avoid your own color.</li>
+                            <li>Dots <strong>respawn</strong> elsewhere immediately after being hit.</li>
+                        </ul>
+                        <button id="close-rules">START WAR</button>
+                    </div>
+                </div>
+                <div id="ui-overlay" class="glass-panel">
+                    <div class="input-group">
+                        <span class="function-prefix">y = </span>
+                        <input type="text" id="equation-input" placeholder="e.g. sin(x) * 2" autofocus
+                            autocomplete="off">
+                        <button id="plot-btn">Draw</button>
+                    </div>
+                    <div id="error-msg"></div>
+                </div>
+            </div>
+
+            <aside class="controls glass-panel">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="training">Training</button>
+                    <button class="tab-btn" data-tab="war">War Mode</button>
+                </div>
+                <div class="tab-content">
+                    <div id="training-info" class="tab-pane active">
+                        <h3>Training Room</h3>
+                        <p><strong>ONE SHOT CHALLENGE:</strong> Hit the <span class="p1-text">Blue target</span> but avoid the <span class="p2-text">Red obstacles</span>! Hitting an obstacle or missing will end the game. More obstacles appear as your score grows!</p>
+                        <div class="training-stats">
+                            <p>Current Streak: <span id="current-streak">0</span></p>
+                        </div>
+                        <button id="reset-training">Start New Session</button>
+                    </div>
+                    <div id="war-info" class="tab-pane">
+                        <h3>Equation History</h3>
+                        <div id="history-container">
+                            <ul id="equation-history">
+                                <!-- History items will be added here -->
+                                <li class="history-placeholder">No equations yet...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="guide">
+                    <h4>Quick Guide:</h4>
+                    <ul>
+                        <li>Use standard math syntax: <code>x^2</code>, <code>sqrt(x)</code>, <code>sin(x)</code>.</li>
+                        <li>The grid units are from -10 to 10 on both axes.</li>
+                        <li>Hit the target dots with your graph line!</li>
+                    </ul>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Graph War. Built by Baro Vo</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

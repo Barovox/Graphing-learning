@@ -1,0 +1,21 @@
+{
+  "name": "graph-war-clone",
+  "version": "1.0.0",
+  "description": "A math-based graphing game clone.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "install-app": "npm install"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "keywords": [
+    "math",
+    "graph",
+    "game",
+    "canvas"
+  ],
+  "author": "",
+  "license": "ISC"
+}

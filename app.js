@@ -1,6 +1,3 @@
-/**
- * Graph War Clone - Core Logic
- */
 
 class CoordinateSystem {
     constructor(canvas) {

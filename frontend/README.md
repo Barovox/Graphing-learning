@@ -1,4 +1,4 @@
-# Frontend Documentation - Graph War Clone
+# Frontend Documentation -  Graphing
 
 The frontend is built using Vanilla JavaScript and HTML5 Canvas. It utilizes `math.js` for safe mathematical expression evaluation and `localStorage` for state persistence.
 
